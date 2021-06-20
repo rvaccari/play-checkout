@@ -35,8 +35,8 @@ ALLOWED_HOSTS=127.0.0.1,.localhost,0.0.0.0
 )
 
 # Writing our configuration file to '.env'
-with open('.env', 'w') as configfile:
+with open(".env", "w") as configfile:
     configfile.write(CONFIG_STRING)
 
-print('Success!')
-print('Type: cat .env')
+print("Success!")
+print("Type: cat .env")
