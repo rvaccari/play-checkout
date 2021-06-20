@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "backend.core",
     "backend.product",
+    "backend.checkout",
 ]
 
 MIDDLEWARE = [
