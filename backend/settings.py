@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_extensions",
     "backend.core",
+    "backend.product",
+    "backend.checkout",
 ]
 
 MIDDLEWARE = [

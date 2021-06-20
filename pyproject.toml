@@ -9,7 +9,6 @@ strict = true
 
 [tool.black]
 line-length = 120
-skip-string-normalization = true
 target-version = ['py37']
 include = '\.pyi?$'
 exclude = '''
@@ -28,6 +27,7 @@ exclude = '''
     | dist
   )/
   | .coverage*
+  | manage.py
 )
 '''
 
