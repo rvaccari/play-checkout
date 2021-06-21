@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "backend.core",
     "backend.product",
     "backend.checkout",
+    "backend.external_services",
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,6 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# grpc
+DISCOUNT_SERVICE_URL = config("DISCOUNT_SERVICE_URL")

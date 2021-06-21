@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Product:
-    def __init__(self, id: int, quantity: int, unit_amount: int, discount: int, is_gift: bool):
+    def __init__(self, id: int, quantity: int, unit_amount: int, discount_percentage: float, is_gift: bool):
         self.id = id
         self.quantity = quantity
         self.is_gift = is_gift
@@ -12,9 +12,11 @@ class Product:
             self.discount = 0
             self.total_amount = 0
         else:
+            total_amount = unit_amount * quantity
+            discount = int(round(total_amount * discount_percentage))
             self.unit_amount = unit_amount
             self.discount = discount
-            self.total_amount = unit_amount * quantity
+            self.total_amount = total_amount
 
     id: int
     quantity: int
@@ -25,7 +27,7 @@ class Product:
 
 
 @dataclass
-class Checkout:
+class Basket:
     def __init__(self):
         self.products = []
         self.total_amount = 0

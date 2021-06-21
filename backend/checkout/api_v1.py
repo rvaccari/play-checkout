@@ -1,25 +1,26 @@
+import logging
+
 from ninja import Router
 
-from backend.checkout.domains import Checkout, Product
-from backend.checkout.schemas import CheckoutSchemaIn, CheckoutSchemaOut
+from backend.checkout.builders import BasketBuilder
+from backend.checkout.schemas import BasketSchemaIn, BasketSchemaOut
 from backend.product.repository import ProductRepository
+
+logger = logging.getLogger(__name__)
 
 router = Router()
 
 
-@router.post("/", response=CheckoutSchemaOut)
-def index(request, checkout_int: CheckoutSchemaIn):
-    product_repository = ProductRepository()
-    checkout = Checkout()
+@router.post("/", response=BasketSchemaOut)
+def index(request, basket_in: BasketSchemaIn):
+    base_log_message = f"checkout.index:create_basket"
+    logger.info(f"{base_log_message} - start")
 
-    for product_in in checkout_int.products:
-        product_domain = product_repository.get_by_id(product_in.id)
-        product = Product(
-            id=product_in.id,
-            quantity=product_in.quantity,
-            unit_amount=product_domain.amount,
-            discount=0,
-            is_gift=product_domain.is_gift,
-        )
-        checkout.add_product(product)
-    return checkout
+    product_repository = ProductRepository()
+
+    logger.info(f"{base_log_message} - call BasketBuilder")
+    basket_builder = BasketBuilder(basket_in, product_repository)
+
+    logger.info(f"{base_log_message} - end")
+
+    return basket_builder.build()

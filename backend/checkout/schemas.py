@@ -6,7 +6,7 @@ class ProductSchemaIn(Schema):
     quantity: int
 
 
-class CheckoutSchemaIn(Schema):
+class BasketSchemaIn(Schema):
     products: list[ProductSchemaIn]
 
 
@@ -19,7 +19,7 @@ class ProductSchemaOut(Schema):
     is_gift: bool
 
 
-class CheckoutSchemaOut(Schema):
+class BasketSchemaOut(Schema):
     total_amount: int
     total_amount_with_discount: int
     total_discount: int
