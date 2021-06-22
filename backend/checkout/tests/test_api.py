@@ -17,14 +17,7 @@ class TestCheckoutApiPost:
             "total_amount_with_discount": 15157,
             "total_discount": 0,
             "products": [
-                {
-                    "id": 1,
-                    "quantity": 1,
-                    "unit_amount": 15157,
-                    "total_amount": 15157,
-                    "discount": 0,
-                    "is_gift": False,
-                }
+                {"id": 1, "quantity": 1, "unit_amount": 15157, "total_amount": 15157, "discount": 0, "is_gift": False,}
             ],
         }
         assert resp.json() == expected
