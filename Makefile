@@ -1,4 +1,4 @@
-pre_install:
+pre-install:
 	curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 
 install:
@@ -29,3 +29,11 @@ ci-parallel:
 	$(eval ARGS ?= -n $(TEST_WORKERS) --dist=loadfile $(EXTRA_ARGS))
 	make ci ARGS="$(ARGS)"
 
+docker-build:
+	docker build .
+
+docker-up:
+	docker-compose up -d
+
+docker-stop:
+	docker-compose stop
