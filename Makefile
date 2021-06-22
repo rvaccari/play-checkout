@@ -7,6 +7,9 @@ install:
 configure:
 	poetry run python contrib/env_gen.py
 
+run:
+	poetry run python manage.py runserver
+
 format:
 	poetry run black backend contrib
 
